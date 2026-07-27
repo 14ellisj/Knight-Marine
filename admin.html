@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Knight Marine staff story publishing area.">
+  <title>Knight Marine Stories Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#071824">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="admin-header"><a class="brand" href="index.html" aria-label="Knight Marine home"><img src="assets/images/knight-marine-logo.png" alt="Knight Marine Services"></a><a class="admin-return" href="stories.html">View job stories ↗</a></header>
+  <main id="main" class="admin-main">
+    <section class="admin-panel"><p class="eyebrow">Staff publishing area</p><h1>Share the work behind the work.</h1><p class="admin-lead">Create a customer-facing job story with a title, a short introduction, paragraphs of detail and up to ten optimised project images.</p>
+      <div class="admin-setup" data-admin-setup hidden></div>
+      <div data-login-panel hidden><form class="admin-form" data-login-form><h2>Sign in</h2><p>Use the staff email address and password set up by the Knight Marine administrator.</p><label>Email address<input type="email" name="email" autocomplete="email" required></label><label>Password<input type="password" name="password" autocomplete="current-password" required></label><button class="button primary" type="submit">Sign in</button><p class="form-status" data-login-status aria-live="polite"></p></form></div>
+      <div data-admin-dashboard hidden><div class="admin-dashboard-heading"><div><h2>Create a job story</h2><p>Draft stories stay private. Tick Publish when you are happy for customers to see it.</p></div><button class="text-button" type="button" data-sign-out>Sign out</button></div><form class="admin-form story-form" data-publish-form><label>Story title<input type="text" name="title" maxlength="120" placeholder="A quieter onboard power upgrade" required></label><label>Short introduction <span>(shown on the stories page)</span><textarea name="summary" maxlength="260" rows="3" placeholder="A clear, customer-friendly overview of the work."></textarea></label><label>The story <span>(use a blank line between paragraphs)</span><textarea name="body" rows="12" placeholder="What was the boat owner looking to improve?&#10;&#10;What did Knight Marine install, repair or restore?&#10;&#10;What difference did it make?" required></textarea></label><label>Project photographs <span>(JPG, PNG or WebP; maximum 6MB each)</span><input type="file" name="images" accept="image/jpeg,image/png,image/webp" multiple></label><label class="checkbox-field"><input type="checkbox" name="published"><span>Publish this story immediately</span></label><button class="button primary" type="submit">Save story</button><p class="form-status" data-publish-status aria-live="polite"></p></form><section class="admin-recent"><h2>Recent stories</h2><ul data-admin-stories></ul></section></div>
+    </section>
+  </main>
+  <script src="supabase-config.js"></script><script type="module" src="admin.js"></script>
+</body>
+</html>
