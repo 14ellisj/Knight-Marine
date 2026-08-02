@@ -3,7 +3,7 @@
   --ink-2: #0c2535;
   --ink-3: #11364a;
   --blue: #00a6d6;
-  --blue-dark: #007fae;
+  --blue-dark: #006c93;
   --gold: #c9a45c;
   --paper: #f5f8f9;
   --white: #fff;
@@ -27,9 +27,9 @@ button { font: inherit; }
 .topbar { min-height: 38px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 22px; padding: 8px 20px; color: var(--muted); background: #041018; font-size: .76rem; }
 .topbar a:hover, .utility-link:hover { color: var(--white); }
 .site-header { position: sticky; top: 0; z-index: 30; background: rgba(7,24,36,.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
-.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 1220px; min-height: 78px; margin: 0 auto; padding: 12px 20px; }
+.nav { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 1220px; min-height: 78px; margin: 0 auto; padding: 12px 20px; }
 .brand { flex: 0 1 190px; }
-.brand img { width: 182px; }
+.brand img { width: 182px; height: auto; }
 .nav-links { display: flex; align-items: center; justify-content: center; gap: clamp(13px, 2vw, 27px); color: #dbe8ee; font-size: .84rem; }
 .nav-links a { position: relative; padding: 8px 0; }
 .nav-links a::after { content: ""; position: absolute; right: 0; bottom: 3px; left: 0; height: 2px; transform: scaleX(0); transform-origin: right; background: var(--blue); transition: transform .24s ease; }
@@ -44,12 +44,16 @@ button { font: inherit; }
 .button.dark:hover { background: var(--ink-3); transform: translateY(-2px); }
 .menu-toggle { display: none; width: 45px; height: 45px; padding: 0; color: var(--white); background: transparent; border: 1px solid var(--line); border-radius: 50%; cursor: pointer; }
 .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 
 .hero { position: relative; min-height: min(790px, calc(100svh - 116px)); display: grid; align-items: center; overflow: hidden; background: #071824; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(7,24,36,.98) 0%, rgba(7,24,36,.84) 40%, rgba(7,24,36,.42) 100%); }
 .hero::after { content: ""; position: absolute; z-index: 0; inset: auto -5% -44% 45%; height: 460px; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; transform: rotate(-20deg); }
 .hero.has-image { background-position: center; background-size: cover; background-repeat: no-repeat; }
-.hero-home { background-image: url("assets/images/marina-solar.jpg"); }
+.hero-home { background-image: url("assets/images/marina-solar-optimized.webp"); }
 .hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1220px; margin: 0 auto; padding: 92px 20px 145px; }
 .eyebrow { margin: 0 0 18px; color: var(--gold); font-size: .75rem; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
 h1, h2, h3, p { margin-top: 0; }
@@ -82,6 +86,7 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.2rem, 4.5vw, 3.7rem
 .section-paper .service-card { color: var(--ink); background: var(--white); border-color: #e1e9ec; }
 .section-paper .service-card:hover { border-color: var(--blue); }
 .section-paper .service-card p { color: var(--copy); }
+.section-paper .service-card .card-number, .process-card small { color: #80601d; }
 .card-number { color: var(--gold); font-size: .76rem; font-weight: 850; letter-spacing: .12em; }
 .service-card h3 { margin: auto 0 9px; font-size: 1.45rem; letter-spacing: -.035em; }
 .service-card p { margin: 0; color: var(--muted); font-size: .92rem; }
@@ -91,11 +96,11 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.2rem, 4.5vw, 3.7rem
 
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 66px); align-items: center; }
 .image-panel { min-height: 480px; overflow: hidden; background: #0b2739 center/cover no-repeat; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
-.image-panel.solar { background-image: url("assets/images/marina-solar.jpg"); }
-.image-panel.garmin { background-image: url("assets/images/garmin-navigation-display.jpg"); }
-.image-panel.interior { background-image: url("assets/images/yacht-interior-refit.jpg"); }
-.image-panel.battery { background-image: url("assets/images/lithium-battery-installation.jpg"); }
-.image-panel.electrical { background-image: url("assets/images/victron-electrical-installation.jpg"); }
+.image-panel.solar { background-image: url("assets/images/marina-solar-optimized.webp"); }
+.image-panel.garmin { background-image: url("assets/images/garmin-navigation-display-optimized.webp"); background-position: center top; background-size: auto 120%; }
+.image-panel.interior { background-image: url("assets/images/yacht-interior-refit-optimized.webp"); }
+.image-panel.battery { background-image: url("assets/images/lithium-battery-installation-optimized.webp"); }
+.image-panel.electrical { background-image: url("assets/images/victron-electrical-installation-optimized.webp"); }
 .premium-box { padding: clamp(30px, 5vw, 54px); color: var(--ink); background: #fff; border-radius: var(--radius); }
 .premium-box h2 { margin-bottom: 17px; font-size: clamp(2.1rem, 4.5vw, 3.5rem); line-height: .98; letter-spacing: -.055em; }
 .premium-box p { color: var(--copy); }
@@ -105,7 +110,7 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.2rem, 4.5vw, 3.7rem
 
 .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .process-card { padding: 25px; background: var(--white); border: 1px solid #e2e9ec; border-radius: 22px; }
-.process-card small { color: var(--gold); font-weight: 900; letter-spacing: .12em; }
+.process-card small { color: #80601d; font-weight: 900; letter-spacing: .12em; }
 .process-card h3 { margin: 12px 0 8px; font-size: 1.3rem; letter-spacing: -.035em; }
 .process-card p { margin: 0; color: #64747c; font-size: .92rem; }
 .quote { color: var(--white); background: linear-gradient(135deg, #082033, #031018); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -117,12 +122,12 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .page-hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1220px; margin: 0 auto; padding: 90px 20px 80px; }
 .page-hero h1 { max-width: 780px; margin-bottom: 16px; font-size: clamp(3rem, 6.7vw, 5.75rem); }
 .page-hero p { max-width: 630px; margin: 0; color: #d7e3ea; font-size: 1.1rem; }
-.hero-electronics { background-image: url("assets/images/garmin-navigation-display.jpg"); }
-.hero-power { background-image: url("assets/images/marina-solar.jpg"); }
-.hero-smart { background-image: url("assets/images/victron-electrical-installation.jpg"); }
-.hero-antifouling { background-image: url("assets/images/yacht-interior-refit.jpg"); background-position: center 35%; }
-.hero-detailing { background-image: url("assets/images/yacht-interior-refit.jpg"); }
-.hero-refit { background-image: url("assets/images/yacht-interior-refit.jpg"); }
+.hero-electronics { background-image: url("assets/images/garmin-navigation-display-optimized.webp"); }
+.hero-power { background-image: url("assets/images/marina-solar-optimized.webp"); }
+.hero-smart { background-image: url("assets/images/victron-electrical-installation-optimized.webp"); }
+.hero-antifouling { background-image: url("assets/images/yacht-interior-refit-optimized.webp"); background-position: center 35%; }
+.hero-detailing { background-image: url("assets/images/yacht-interior-refit-optimized.webp"); }
+.hero-refit { background-image: url("assets/images/yacht-interior-refit-optimized.webp"); }
 .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 23px; color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .breadcrumb span { color: var(--muted); }
 
@@ -141,7 +146,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .side-card .minor { display: block; margin-top: 14px; color: var(--muted); font-size: .83rem; text-align: center; }
 .feature-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .feature-card { padding: 25px; color: var(--ink); background: var(--white); border: 1px solid #e1e9ec; border-radius: 20px; }
-.feature-card .icon { display: grid; place-items: center; width: 39px; height: 39px; margin-bottom: 31px; color: var(--blue); background: #e7f8fc; border-radius: 50%; font-weight: 900; }
+.feature-card .icon { display: grid; place-items: center; width: 39px; height: 39px; margin-bottom: 31px; color: #006c93; background: #e7f8fc; border-radius: 50%; font-weight: 900; }
 .feature-card h3 { margin: 0 0 8px; font-size: 1.25rem; letter-spacing: -.035em; }
 .feature-card p { margin: 0; color: var(--copy); font-size: .92rem; }
 
@@ -152,7 +157,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .shop-teaser p { max-width: 620px; color: var(--muted); }
 .shop-points { display: grid; gap: 13px; padding: 26px; background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: 22px; }
 .shop-point { display: flex; gap: 13px; align-items: center; }
-.shop-point b { display: grid; flex: 0 0 31px; place-items: center; width: 31px; height: 31px; color: var(--blue); background: rgba(0,166,214,.12); border-radius: 50%; }
+.shop-point b { display: grid; flex: 0 0 31px; place-items: center; width: 31px; height: 31px; color: #7ee8ff; background: rgba(0,166,214,.12); border-radius: 50%; }
 
 .gallery-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .gallery-tile { position: relative; min-height: 238px; overflow: hidden; padding: 25px; background: linear-gradient(140deg, rgba(255,255,255,.12), rgba(255,255,255,.03)); border: 1px dashed rgba(255,255,255,.35); border-radius: 22px; }
@@ -166,7 +171,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .contact-card p { margin: 12px 0 0; color: var(--muted); }
 .footer { padding: 45px 20px 28px; color: var(--muted); background: #020a10; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto 35px; }
-.footer-brand img { width: 160px; margin-bottom: 15px; }
+.footer-brand img { width: 160px; height: auto; margin-bottom: 15px; }
 .footer p { max-width: 340px; margin: 0; font-size: .84rem; }
 .footer h3 { margin: 0 0 12px; color: var(--white); font-size: .85rem; }
 .footer ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; font-size: .83rem; }
@@ -189,7 +194,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .stories-empty h2 { margin: 0 0 8px; font-size: 1.5rem; letter-spacing: -.04em; }
 .stories-empty p { margin: 0; color: var(--copy); }
 .story-page { min-height: 65vh; }
-.back-link { display: inline-flex; margin-bottom: 35px; color: var(--blue-dark); font-size: .88rem; font-weight: 800; }
+.back-link { display: inline-flex; margin-bottom: 35px; color: #006c93; font-size: .88rem; font-weight: 800; }
 .story-page article { max-width: 900px; }
 .story-page h1 { max-width: 900px; margin-bottom: 15px; color: var(--ink); font-size: clamp(3rem, 6vw, 5.6rem); }
 .story-intro { max-width: 760px; margin: 0 0 30px; color: #31505f; font-size: clamp(1.12rem, 2.2vw, 1.4rem); line-height: 1.5; }
@@ -208,6 +213,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .admin-main { padding: 36px 20px 80px; }
 .admin-panel { max-width: 900px; margin: 0 auto; padding: clamp(28px, 6vw, 60px); background: var(--white); border: 1px solid #dce6e9; border-radius: 28px; box-shadow: 0 18px 48px rgba(8,32,51,.1); }
 .admin-panel h1 { max-width: 680px; margin-bottom: 16px; color: var(--ink); font-size: clamp(2.8rem, 6vw, 5.2rem); }
+.admin-panel .eyebrow { color: #80601d; }
 .admin-lead { max-width: 650px; margin-bottom: 40px; color: var(--copy); font-size: 1.05rem; }
 .admin-setup { padding: 20px 22px; color: #714f00; background: #fff7dd; border: 1px solid #ecd79a; border-radius: 15px; }
 .admin-dashboard-heading { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 26px; }
@@ -231,8 +237,16 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .admin-recent li { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid #e1e9ec; }
 .admin-recent li span { color: var(--copy); font-size: .86rem; }
 
+.section:not(.section-paper) .content-block h2,
+.section:not(.section-paper) .content-block h3 { color: var(--white); }
+.section:not(.section-paper) .content-block p,
+.section:not(.section-paper) .content-block ul { color: #d7e3ea; }
+.section:not(.section-paper) .content-block a { color: #6bddf7; }
+.section-paper .text-link,
+.premium-box .text-link { color: #006c93; }
+
 @media (max-width: 900px) {
-  .nav-links { position: fixed; top: 116px; right: 13px; left: 13px; display: grid; justify-content: stretch; gap: 2px; padding: 12px; visibility: hidden; opacity: 0; background: #0b2433; border: 1px solid var(--line); border-radius: 18px; transform: translateY(-12px); transition: opacity .2s ease, transform .2s ease, visibility .2s ease; box-shadow: var(--shadow); }
+  .nav-links { position: absolute; top: calc(100% + 6px); right: 13px; left: 13px; display: grid; justify-content: stretch; gap: 2px; padding: 12px; visibility: hidden; opacity: 0; background: #0b2433; border: 1px solid var(--line); border-radius: 18px; transform: translateY(-12px); transition: opacity .2s ease, transform .2s ease, visibility .2s ease; box-shadow: var(--shadow); }
   .nav-links a { padding: 12px; border-radius: 9px; }
   .nav-links a:hover { background: rgba(255,255,255,.08); }
   .nav-links.is-open { visibility: visible; opacity: 1; transform: translateY(0); }
@@ -249,7 +263,6 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
   .topbar { justify-content: flex-start; padding-inline: 16px; }
   .nav { min-height: 70px; padding-inline: 16px; }
   .brand img { width: 154px; }
-  .nav-links { top: 108px; }
   .hero { min-height: 675px; }
   .hero::before, .page-hero::before { background: linear-gradient(90deg, rgba(7,24,36,.97), rgba(7,24,36,.76)); }
   .hero-inner { padding: 72px 20px 130px; }
