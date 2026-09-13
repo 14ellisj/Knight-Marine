@@ -7,6 +7,19 @@ document.querySelectorAll('.nav-links').forEach((navigation) => {
   navigation.insertBefore(link, refitLink || null);
 });
 
+document.querySelectorAll('.topbar > span').forEach((location) => {
+  const link = document.createElement('a');
+  link.className = 'topbar-location';
+  link.href = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') ? '#location' : 'index.html#location';
+  link.setAttribute('aria-label', 'Find Knight Marine at Universal Marina on the River Hamble');
+  link.innerHTML = '<span>Based at</span><strong>Universal Marina · River Hamble</strong>';
+  location.replaceWith(link);
+});
+
+document.querySelectorAll('.nav-cta').forEach((callToAction) => {
+  callToAction.textContent = 'Get a quote';
+});
+
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.nav-links');
 
