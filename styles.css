@@ -115,7 +115,7 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.2rem, 4.5vw, 3.7rem
 .image-panel.garmin { background-image: url("assets/images/electronics-installation.jpg"); background-position: 52% center; }
 .image-panel.interior { background-image: url("assets/images/refit-interior.jpg"); }
 .image-panel.battery { background-image: url("assets/images/power-lithium.jpg"); }
-.image-panel.electrical { background-image: url("assets/images/power-victron.jpg"); }
+.image-panel.electrical { background-image: url("assets/images/power-lithium.jpg"); }
 .premium-box { padding: clamp(30px, 5vw, 54px); color: var(--ink); background: #fff; border-radius: var(--radius); }
 .premium-box h2 { margin-bottom: 17px; font-size: clamp(2.1rem, 4.5vw, 3.5rem); line-height: .98; letter-spacing: -.055em; }
 .premium-box p { color: var(--copy); }
