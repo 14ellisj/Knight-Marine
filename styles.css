@@ -169,15 +169,27 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 /* Brand systems */
 .partners .section-heading { max-width: 850px; }
 .partners .eyebrow { color: #80601d; }
-.partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.partner-name { display: grid; place-items: center; min-height: 94px; padding: 18px; color: #18313f; background: #fff; border: 1px solid #dce7eb; border-radius: 18px; font-size: clamp(1rem, 1.7vw, 1.35rem); font-weight: 900; letter-spacing: -.03em; text-align: center; box-shadow: 0 10px 28px rgba(8,32,51,.055); }
-.partner-name.victron { color: #0079bd; }
-.partner-name.garmin { color: #111; letter-spacing: .05em; text-transform: uppercase; }
-.partner-name.raymarine { color: #d71920; text-transform: uppercase; }
-.partner-name.bg { color: #121e28; font-size: 1.65rem; }
-.partner-name.simrad { color: #d71920; letter-spacing: .02em; text-transform: uppercase; }
-.partner-name.fusion { color: #ec652d; letter-spacing: .06em; text-transform: uppercase; }
-.partner-name.starlink { color: #151b20; letter-spacing: .04em; text-transform: uppercase; }
+.partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.partner-logo-card { display: grid; place-items: center; min-height: 122px; padding: 22px 28px; background: #fff; border: 1px solid #dce7eb; border-radius: 18px; box-shadow: 0 10px 28px rgba(8,32,51,.055); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.partner-logo-card:hover { transform: translateY(-3px); border-color: rgba(2,183,216,.55); box-shadow: 0 16px 34px rgba(8,32,51,.1); }
+.partner-logo-card img { display: block; width: 100%; max-width: 195px; max-height: 68px; object-fit: contain; }
+.partner-logo-card.victron img { max-width: 118px; max-height: 86px; }
+.partner-logo-card.bg { background: #0b1925; border-color: #0b1925; }
+.partner-logo-card.bg img { max-width: 158px; }
+.partner-logo-card.simrad img { max-width: 190px; }
+
+.brand-band { padding-block: 64px; background: #edf3f5; }
+.brand-band-inner { display: grid; grid-template-columns: minmax(220px,.72fr) minmax(0,1.28fr); gap: clamp(28px,5vw,72px); align-items: center; }
+.brand-band-heading h2 { max-width: 560px; margin-bottom: 0; color: #0b2739; font-size: clamp(1.8rem,3.2vw,3rem); line-height: 1.02; }
+.brand-band-heading .eyebrow { color: #80601d; }
+.brand-logo-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(118px,1fr)); gap: 10px; }
+.brand-logo-row.single { grid-template-columns: minmax(190px,320px); }
+.brand-logo-chip { display: grid; place-items: center; min-height: 94px; padding: 15px 18px; background: #fff; border: 1px solid #dce7eb; border-radius: 15px; box-shadow: 0 8px 22px rgba(8,32,51,.045); }
+.brand-logo-chip img { display: block; width: 100%; max-width: 145px; max-height: 53px; object-fit: contain; }
+.brand-logo-chip.victron img { max-width: 92px; max-height: 70px; }
+.brand-logo-chip.bg { background: #0b1925; border-color: #0b1925; }
+.brand-logo-chip.bg img { max-width: 126px; }
+.brand-logo-chip.simrad img { max-width: 140px; }
 
 /* Project video content */
 .video-section { background: linear-gradient(150deg, #0b2739, #05131e); }
@@ -317,6 +329,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
   .hero-k-mark { right: -20px; width: 190px; height: 225px; opacity: .28; }
   .hero-k-mark img { top: -127px; left: -120px; width: 1090px; }
   .service-grid, .feature-list, .partner-grid { grid-template-columns: 1fr 1fr; }
+  .brand-band-inner { grid-template-columns: 1fr; }
   .story-grid { grid-template-columns: 1fr 1fr; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
@@ -345,7 +358,9 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
   .section { padding-block: 72px; }
   .service-grid, .feature-list, .process-grid, .split, .content-grid, .shop-inner, .contact-card, .gallery-intro, .story-grid, .partner-grid, .video-grid, .location-card { grid-template-columns: 1fr; }
   .location-image { min-height: 290px; }
-  .partner-name { min-height: 76px; }
+  .partner-logo-card { min-height: 104px; }
+  .brand-logo-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .brand-logo-row.single { grid-template-columns: minmax(180px,280px); }
   .video-card h3, .video-card p { margin-inline: 19px; }
   .section-actions .button { flex: 1 1 190px; }
   .service-card { min-height: 225px; }
