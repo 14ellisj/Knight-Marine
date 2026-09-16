@@ -324,6 +324,28 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .section-paper .text-link,
 .premium-box .text-link { color: #006c93; }
 
+/* Yacht refit: four-part service grid */
+.refit-intro .content-grid { align-items: center; }
+.refit-intro .content-block { margin: 0; }
+.refit-intro .content-block .eyebrow { margin-bottom: 15px; color: #80601d; }
+.refit-services { color: var(--ink); background: #e8eff1; }
+.refit-heading { max-width: 780px; margin-bottom: 38px; }
+.refit-heading h2 { max-width: 720px; }
+.refit-heading > p:last-child { max-width: 650px; color: var(--copy); }
+.refit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.refit-card { overflow: hidden; min-width: 0; background: var(--white); border: 1px solid #d8e3e7; border-radius: 24px; box-shadow: 0 16px 38px rgba(8, 32, 51, .08); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.refit-card:hover { border-color: rgba(38, 176, 222, .75); transform: translateY(-5px); box-shadow: 0 22px 48px rgba(8, 32, 51, .14); }
+.refit-card-image { aspect-ratio: 16 / 9; background-position: center; background-size: cover; }
+.refit-card-image.navigation { background-image: linear-gradient(rgba(7, 24, 36, .08), rgba(7, 24, 36, .08)), url("assets/images/electronics-installation.jpg"); background-position: 50% 47%; }
+.refit-card-image.upholstery { background-image: linear-gradient(rgba(7, 24, 36, .04), rgba(7, 24, 36, .04)), url("assets/images/refit-interior.jpg"); }
+.refit-card-image.entertainment { background-image: linear-gradient(rgba(7, 24, 36, .06), rgba(7, 24, 36, .06)), url("assets/images/fusion-audio-installation.jpg"); }
+.refit-card-image.power { background-image: linear-gradient(rgba(7, 24, 36, .05), rgba(7, 24, 36, .05)), url("assets/images/power-lithium.jpg"); background-position: 52% center; }
+.refit-card-body { display: flex; flex-direction: column; align-items: flex-start; min-height: 285px; padding: 27px 29px 30px; }
+.refit-card .card-number { margin-bottom: 11px; color: #80601d; font-size: .72rem; font-weight: 900; letter-spacing: .16em; }
+.refit-card h3 { margin: 0 0 13px; color: var(--ink); font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.02; letter-spacing: -.045em; }
+.refit-card p { margin: 0 0 22px; color: var(--copy); }
+.refit-card .text-link { margin-top: auto; color: #006c93; }
+
 @media (max-width: 1260px) {
   .nav-links { position: absolute; top: calc(100% + 6px); right: 13px; left: 13px; display: grid; justify-content: stretch; gap: 2px; padding: 12px; visibility: hidden; opacity: 0; background: #0b2433; border: 1px solid var(--line); border-radius: 18px; transform: translateY(-12px); transition: opacity .2s ease, transform .2s ease, visibility .2s ease; box-shadow: var(--shadow); }
   .nav-links a { padding: 12px; border-radius: 9px; }
@@ -362,7 +384,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
   .trust-item { padding: 19px 22px; border-right: 0; border-bottom: 1px solid #e4ecef; }
   .trust-item:last-child { border-bottom: 0; }
   .section { padding-block: 72px; }
-  .service-grid, .feature-list, .process-grid, .split, .content-grid, .shop-inner, .contact-card, .gallery-intro, .story-grid, .partner-grid, .video-grid, .location-card { grid-template-columns: 1fr; }
+  .service-grid, .feature-list, .process-grid, .split, .content-grid, .shop-inner, .contact-card, .gallery-intro, .story-grid, .partner-grid, .video-grid, .location-card, .refit-grid { grid-template-columns: 1fr; }
   .location-image { min-height: 290px; }
   .partner-logo-card { min-height: 104px; }
   .brand-logo-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -372,6 +394,8 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
   .service-card { min-height: 225px; }
   .image-panel { min-height: 360px; }
   .content-grid { gap: 38px; }
+  .refit-heading { margin-bottom: 28px; }
+  .refit-card-body { min-height: 0; padding: 24px 23px 27px; }
   .side-card { position: static; }
   .page-hero { min-height: 445px; }
   .page-hero-inner { padding-block: 65px; }
