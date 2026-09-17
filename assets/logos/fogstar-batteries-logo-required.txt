@@ -1,0 +1,6 @@
+FOGSTAR BATTERIES — OFFICIAL LOGO ASSET REQUIRED
+
+Place the client-approved Fogstar Batteries logo in this folder as:
+fogstar-batteries.png
+
+Do not replace this note with a recreated or unofficial logo.
