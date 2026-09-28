@@ -4,19 +4,21 @@ Static, multi-page website built from the supplied homepage direction and servic
 
 ## Main pages
 
-- `index.html` — homepage
-- `electronics.html` — electronics and navigation
-- `power-systems.html` — Victron Energy and onboard power
-- `smart-boat.html` — connected power and navigation systems
-- `boat-care.html` — maintenance overview
-- `antifouling.html` — antifouling and hull care
-- `detailing.html` — yacht detailing and polishing
-- `yacht-refit.html` — refit support
-- `fusion-audio.html` — Fusion marine audio
-- `shop.html` — future shop landing page
-- `stories.html` — public recent-work and job-stories page
-- `story.html` — individual customer-facing job-story page
-- `admin.html` — secure staff publishing area (connect Supabase first)
+- `index.html` - homepage
+- `electronics.html` - electronics and navigation
+- `marine-electrical.html` - marine electrical diagnostics, repairs and upgrades
+- `power-systems.html` - Victron Energy and onboard power
+- `calibration-commissioning.html` - instrument calibration, autopilot tuning and sea-trial commissioning
+- `smart-boat.html` - connected power and navigation systems
+- `boat-care.html` - maintenance overview
+- `antifouling.html` - antifouling and hull care
+- `detailing.html` - yacht detailing and polishing
+- `yacht-refit.html` - refit support
+- `fusion-audio.html` - Fusion marine audio
+- `shop.html` - future shop landing page
+- `stories.html` - public recent-work and job-stories page
+- `story.html` - individual customer-facing job-story page
+- `admin.html` - secure staff publishing area (connect Supabase first)
 
 ## Media library
 

@@ -2,19 +2,19 @@
 
 The website pages and staff editor are already built. This one-time setup gives them a secure login, a place to store stories and image uploads.
 
-## Part 1 — Create the free project
+## Part 1 - Create the free project
 
 1. Go to [supabase.com](https://supabase.com/) and create an account.
 2. Choose **New project**. Name it `Knight Marine Website`, choose the region closest to the UK, and save the database password somewhere safe. The website will not need this password.
 3. Wait for the project to finish preparing.
 
-## Part 2 — Create the stories database
+## Part 2 - Create the stories database
 
 1. In the left-hand menu, open **SQL Editor** and choose **New query**.
 2. Open [`supabase/schema.sql`](supabase/schema.sql), copy the whole file into the Supabase query box, then select **Run**.
 3. You should see a success message. This creates the stories table, the secure image bucket and the permissions that protect publishing.
 
-## Part 3 — Add the first Knight Marine staff publisher
+## Part 3 - Add the first Knight Marine staff publisher
 
 1. In Supabase, open **Authentication** → **Users** → **Add user**.
 2. Add the staff member’s email address and set a strong password. Keep this account for people trusted to publish stories.
@@ -27,7 +27,7 @@ The website pages and staff editor are already built. This one-time setup gives 
 
 Only users added in this way can upload images or publish stories. Additional staff can be added later by repeating these four steps.
 
-## Part 4 — Connect the website
+## Part 4 - Connect the website
 
 1. In Supabase, open **Project Settings** → **API**.
 2. Copy the **Project URL** and the **Publishable key**. Do **not** use a `service_role` or secret key.
@@ -42,7 +42,7 @@ Only users added in this way can upload images or publish stories. Additional st
 
 The publishable key is expected to be visible in a website. The database rules in `schema.sql` are what prevent visitors from uploading or changing stories.
 
-## Part 5 — Tell Supabase the live web address
+## Part 5 - Tell Supabase the live web address
 
 Once GitHub Pages is live, open **Authentication** → **URL Configuration** in Supabase and set:
 

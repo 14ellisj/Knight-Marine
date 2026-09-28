@@ -1,10 +1,27 @@
+const primaryNavigation = [
+  ['index.html', 'Home'],
+  ['marine-electrical.html', 'Marine electrical'],
+  ['electronics.html', 'Navigation systems'],
+  ['power-systems.html', 'Onboard power'],
+  ['calibration-commissioning.html', 'Calibration'],
+  ['yacht-refit.html', 'Refit'],
+  ['stories.html', 'Projects'],
+  ['meet-the-team.html', 'Meet the team'],
+];
+
 document.querySelectorAll('.nav-links').forEach((navigation) => {
-  if (navigation.querySelector('a[href="stories.html"]')) return;
-  const link = document.createElement('a');
-  link.href = 'stories.html';
-  link.textContent = 'Stories';
-  const refitLink = navigation.querySelector('a[href="yacht-refit.html"]');
-  navigation.insertBefore(link, refitLink || null);
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  navigation.replaceChildren(...primaryNavigation.map(([href, label]) => {
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = label;
+    if (href === currentPage) link.setAttribute('aria-current', 'page');
+    return link;
+  }));
+});
+
+document.querySelectorAll('a[href="meet-the-team.html"]').forEach((link) => {
+  if (/^about(?: the team)?$/i.test(link.textContent.trim())) link.textContent = 'Meet the team';
 });
 
 document.querySelectorAll('.topbar > span').forEach((location) => {
@@ -74,7 +91,7 @@ const enquiryMarkup = `
           <label><span>Boat make / model</span><input name="boatModel" autocomplete="off"></label>
           <label><span>Boat length</span><input name="boatLength" placeholder="e.g. 40 ft" autocomplete="off"></label>
           <label><span>Current marina / location</span><input name="boatLocation" autocomplete="off"></label>
-          <label class="enquiry-wide"><span>Type of work required</span><select name="workType"><option value="">Please select</option><option>Navigation electronics</option><option>Power management</option><option>Boat care</option><option>Yacht refit</option><option>Commercial marine</option><option>Other</option></select></label>
+          <label class="enquiry-wide"><span>Type of work required</span><select name="workType"><option value="">Please select</option><option>Marine electrical assessment</option><option>Electrical diagnostics / repair</option><option>Onboard power system</option><option>Navigation electronics</option><option>Calibration / commissioning</option><option>Connectivity / networking</option><option>Yacht refit</option><option>Boat care</option><option>Commercial marine</option><option>Other</option></select></label>
           <label class="enquiry-wide"><span>Brief project description *</span><textarea name="projectDescription" rows="4" required placeholder="What would you like to improve, repair or install?"></textarea></label>
           <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -89,6 +106,78 @@ const enquiryMarkup = `
 
 document.body.insertAdjacentHTML('beforeend', enquiryMarkup);
 
+const enquiryWorkTypes = [
+  'Marine electrical assessment',
+  'Electrical diagnostics / repair',
+  'Onboard power system',
+  'Navigation electronics',
+  'Calibration / commissioning',
+  'Connectivity / networking',
+  'Marine audio',
+  'Yacht refit',
+  'Boat care',
+  'Commercial marine',
+  'Other',
+];
+
+const pageWorkTypes = {
+  'antifouling.html': 'Boat care',
+  'calibration-commissioning.html': 'Calibration / commissioning',
+  'detailing.html': 'Boat care',
+  'electronics.html': 'Navigation electronics',
+  'fusion-audio.html': 'Marine audio',
+  'marine-electrical.html': 'Electrical diagnostics / repair',
+  'power-systems.html': 'Onboard power system',
+  'smart-boat.html': 'Connectivity / networking',
+  'yacht-refit.html': 'Yacht refit',
+};
+
+const escapeMarkup = (value) => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
+
+document.querySelectorAll('.side-card').forEach((sideCard) => {
+  const pageName = window.location.pathname.split('/').pop() || 'index.html';
+  const heading = sideCard.querySelector('h2')?.textContent.trim() || 'Tell us about your boat.';
+  const introduction = sideCard.querySelector('p')?.textContent.trim() || 'Share a few details and our team will get back to you.';
+  const selectedWorkType = pageWorkTypes[pageName] || '';
+  const workTypeOptions = enquiryWorkTypes.map((workType) => (
+    `<option${workType === selectedWorkType ? ' selected' : ''}>${escapeMarkup(workType)}</option>`
+  )).join('');
+
+  sideCard.classList.add('side-card-form');
+  sideCard.id = 'page-enquiry';
+  sideCard.innerHTML = `
+    <div class="side-form-heading">
+      <p class="eyebrow">Start an enquiry</p>
+      <h2>${escapeMarkup(heading)}</h2>
+      <p>${escapeMarkup(introduction)}</p>
+    </div>
+    <form class="enquiry-form compact-enquiry-form" novalidate>
+      <input type="hidden" name="enquirySource" value="${escapeMarkup(document.title)} - Page enquiry form">
+      <div class="enquiry-grid">
+        <label><span>Name *</span><input name="name" autocomplete="name" required></label>
+        <label><span>Email *</span><input type="email" name="email" autocomplete="email" required></label>
+        <label><span>Phone number</span><input type="tel" name="phone" autocomplete="tel"></label>
+        <label><span>Preferred contact</span><select name="preferredContact"><option>Email</option><option>Phone</option><option>Either</option></select></label>
+        <label><span>Boat make / model</span><input name="boatModel" autocomplete="off"></label>
+        <label><span>Boat length</span><input name="boatLength" placeholder="e.g. 40 ft" autocomplete="off"></label>
+        <label><span>Marina / location</span><input name="boatLocation" autocomplete="off"></label>
+        <label><span>What can we help with? *</span><select name="workType" required>${workTypeOptions}</select></label>
+        <label><span>Tell us about the problem or project *</span><textarea name="projectDescription" rows="5" required placeholder="What would you like to diagnose, repair, install or upgrade?"></textarea></label>
+        <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <div class="enquiry-footer">
+        <p class="enquiry-status" role="status" aria-live="polite">Required fields are marked *</p>
+        <button class="button primary" type="submit">Send Enquiry</button>
+      </div>
+      <a class="side-form-phone" href="tel:02381112032">Prefer to talk? Call 02381 112 032</a>
+    </form>`;
+});
+
 const enquiryDialog = document.querySelector('#boat-enquiry');
 const enquiryForm = enquiryDialog?.querySelector('.enquiry-form');
 const enquirySource = enquiryForm?.querySelector('input[name="enquirySource"]');
@@ -96,14 +185,14 @@ const enquiryStatus = enquiryDialog?.querySelector('.enquiry-status');
 const enquiryClose = enquiryDialog?.querySelector('.enquiry-close');
 let enquiryOpener = null;
 
-const enquiryTextPattern = /tell us about|start an enquiry|request a quote|ask our team|discuss|ask about your project|plan your|make a commercial enquiry|request antifouling|request detailing|start an email enquiry/i;
+const enquiryTextPattern = /tell us about|start an enquiry|request a quote|ask our team|discuss|ask about your project|plan your|book a marine|book electrical|book calibration|make a commercial enquiry|request antifouling|request detailing|start an email enquiry/i;
 
 const openEnquiry = (trigger) => {
   if (!enquiryDialog || !enquiryForm) return;
   enquiryOpener = trigger;
   enquiryForm.reset();
   enquiryStatus.textContent = '';
-  const requestedSource = trigger.dataset.enquirySource || `${document.title} — ${trigger.textContent.trim()}`;
+  const requestedSource = trigger.dataset.enquirySource || `${document.title} - ${trigger.textContent.trim()}`;
   enquirySource.value = requestedSource;
   enquirySource.setAttribute('value', requestedSource);
   enquiryDialog.showModal();
@@ -118,7 +207,7 @@ document.querySelectorAll('a, button').forEach((trigger) => {
     (trigger.matches('.button') && href.startsWith('mailto:info@knightmarine.co.uk')) ||
     enquiryTextPattern.test(trigger.textContent.trim());
 
-  if (!isProjectAction || href.startsWith('tel:')) return;
+  if (!isProjectAction || href.startsWith('tel:') || (href === '#contact' && document.querySelector('.inline-enquiry-form'))) return;
   trigger.setAttribute('aria-haspopup', 'dialog');
   trigger.addEventListener('click', (event) => {
     event.preventDefault();
@@ -136,21 +225,35 @@ enquiryDialog?.addEventListener('close', () => {
   enquiryOpener?.focus();
 });
 
-enquiryForm?.addEventListener('submit', async (event) => {
+const submitEnquiry = async (event) => {
   event.preventDefault();
-  if (!enquiryForm.reportValidity()) return;
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
 
-  const submit = enquiryForm.querySelector('[type="submit"]');
-  const data = Object.fromEntries(new FormData(enquiryForm).entries());
+  const submit = form.querySelector('[type="submit"]');
+  const status = form.querySelector('.enquiry-status');
+  const data = Object.fromEntries(new FormData(form).entries());
   if (data.website) return;
   delete data.website;
 
   submit.disabled = true;
-  enquiryStatus.textContent = 'Preparing your enquiry…';
+  status.textContent = 'Preparing your enquiry…';
 
   if (!enquiryConfig.endpoint) {
-    sessionStorage.setItem('knightMarineEnquiryDraft', JSON.stringify(data));
-    enquiryStatus.innerHTML = 'Online sending is being connected. Your details are saved in this browser; please call <a href="tel:02381112032">02381 112 032</a> for now.';
+    const subject = `Website enquiry - ${data.workType || 'Marine project'}`;
+    const body = [
+      `Name: ${data.name || ''}`,
+      `Email: ${data.email || ''}`,
+      `Phone: ${data.phone || ''}`,
+      `Boat: ${data.boatName || data.boatModel || ''}`,
+      `Boat length: ${data.boatLength || ''}`,
+      `Marina / location: ${data.boatLocation || ''}`,
+      `Service: ${data.workType || ''}`,
+      '',
+      data.projectDescription || '',
+    ].join('\n');
+    status.textContent = 'Opening your email app with the enquiry filled in…';
+    window.location.href = `mailto:info@knightmarine.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     submit.disabled = false;
     return;
   }
@@ -162,11 +265,13 @@ enquiryForm?.addEventListener('submit', async (event) => {
       body: JSON.stringify(data),
     });
     if (!response.ok) throw new Error('Submission failed');
-    enquiryForm.reset();
-    enquiryStatus.textContent = 'Thank you. Your project details have been sent to Knight Marine.';
+    form.reset();
+    status.textContent = 'Thank you. Your project details have been sent to Knight Marine.';
   } catch (error) {
-    enquiryStatus.innerHTML = 'We could not send that just now. Please call <a href="tel:02381112032">02381 112 032</a> or try again.';
+    status.innerHTML = 'We could not send that just now. Please call <a href="tel:02381112032">02381 112 032</a> or try again.';
   } finally {
     submit.disabled = false;
   }
-});
+};
+
+document.querySelectorAll('.enquiry-form').forEach((form) => form.addEventListener('submit', submitEnquiry));

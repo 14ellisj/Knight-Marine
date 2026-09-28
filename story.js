@@ -67,7 +67,7 @@ async function loadStory() {
   story.image_urls?.forEach((url, index) => {
     const image = document.createElement("img");
     image.src = url;
-    image.alt = `${story.title} — image ${index + 1}`;
+    image.alt = `${story.title} - image ${index + 1}`;
     image.loading = index > 0 ? "lazy" : "eager";
     gallery.append(image);
   });

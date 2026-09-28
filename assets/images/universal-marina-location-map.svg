@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Knight Marine at Universal Marina on the River Hamble</title>
+  <desc id="desc">A stylised local map showing Knight Marine at Universal Marina, Sarisbury Green, beside the River Hamble.</desc>
+  <defs>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edf3f3"/>
+      <stop offset="1" stop-color="#d9e5e6"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fc8df"/>
+      <stop offset="1" stop-color="#429bc1"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#061722" flood-opacity=".25"/>
+    </filter>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#7f9ca6" stroke-opacity=".11" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#land)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+
+  <path d="M815 -80C768 80 772 185 832 286c52 88 40 175-28 279-71 108-86 220-42 415h438V-80Z" fill="url(#water)"/>
+  <path d="M846 -40c-40 138-36 229 18 319 59 100 44 209-33 321-60 88-72 181-38 304" fill="none" stroke="#c8edf6" stroke-opacity=".65" stroke-width="12"/>
+
+  <g fill="#66b4d1" stroke="#3c93b6" stroke-width="5">
+    <path d="M699 315h128v44H699z"/>
+    <path d="M672 393h151v44H672z"/>
+    <path d="M650 474h156v44H650z"/>
+    <path d="M662 555h126v44H662z"/>
+  </g>
+  <g stroke="#f7faf9" stroke-width="9" stroke-linecap="round">
+    <path d="M717 337h91"/>
+    <path d="M694 415h110"/>
+    <path d="M674 496h111"/>
+    <path d="M681 577h90"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-80 178C174 191 354 226 519 300c117 53 196 100 275 117" stroke="#9cb0b5" stroke-width="42"/>
+    <path d="M-80 178C174 191 354 226 519 300c117 53 196 100 275 117" stroke="#fff" stroke-width="30"/>
+    <path d="M143 917c48-147 106-255 187-331 81-76 185-132 353-164" stroke="#9cb0b5" stroke-width="34"/>
+    <path d="M143 917c48-147 106-255 187-331 81-76 185-132 353-164" stroke="#fff" stroke-width="23"/>
+    <path d="M359 419c49 33 91 63 128 95 46 40 75 83 92 139" stroke="#aabcc0" stroke-width="25"/>
+    <path d="M359 419c49 33 91 63 128 95 46 40 75 83 92 139" stroke="#fdfefe" stroke-width="16"/>
+  </g>
+
+  <g fill="#bcd0c9" opacity=".82">
+    <path d="M72 298h164v123H72z"/>
+    <path d="M276 99h176v107H276z"/>
+    <path d="M401 666h123v94H401z"/>
+    <path d="M538 213h116v75H538z"/>
+    <path d="M94 552h126v98H94z"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#536b74">
+    <text x="74" y="152" font-size="28" font-weight="700" letter-spacing="3">SARISBURY GREEN</text>
+    <text x="84" y="462" font-size="22" font-weight="700">Bridge Road</text>
+    <text x="286" y="620" font-size="22" font-weight="700" transform="rotate(-35 286 620)">Crableck Lane</text>
+    <text x="920" y="125" font-size="25" font-weight="800" fill="#1c6f94" letter-spacing="2">RIVER HAMBLE</text>
+    <text x="647" y="650" font-size="22" font-weight="800">UNIVERSAL MARINA</text>
+  </g>
+
+  <g transform="translate(675 392)" filter="url(#shadow)">
+    <path d="M0-110c-62 0-112 50-112 112 0 83 112 188 112 188S112 85 112 2C112-60 62-110 0-110Z" fill="#47a9d4" stroke="#fff" stroke-width="12"/>
+    <circle cy="0" r="45" fill="#082333"/>
+    <path d="M-21-28h14v22L15-28h18L5 2l31 38H18L-7 9v31h-14z" fill="#fff"/>
+  </g>
+
+  <g transform="translate(54 711)" filter="url(#shadow)">
+    <rect width="486" height="142" rx="24" fill="#fff"/>
+    <rect width="9" height="142" rx="5" fill="#47a9d4"/>
+    <text x="40" y="50" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="800" fill="#082333">Knight Marine</text>
+    <text x="40" y="86" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#526b75">Unit 5 · Universal Marina</text>
+    <text x="40" y="116" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#6a8189">Sarisbury Green · SO31 7ZN</text>
+  </g>
+</svg>
