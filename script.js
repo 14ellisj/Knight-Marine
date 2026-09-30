@@ -60,6 +60,42 @@ document.querySelectorAll('[data-year]').forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
+const pageHero = document.querySelector('main .page-hero');
+
+if (pageHero) {
+  const brandCards = [
+    ['smg', 'electronics.html', 'SMG', 'assets/logos/smg.svg', 'Explore marine technology supplied through SMG'],
+    ['victron', 'power-systems.html', 'Victron Energy', 'assets/logos/victron-energy.png', 'Explore Victron Energy power systems'],
+    ['garmin', 'electronics.html', 'Garmin', 'assets/logos/garmin-logo-official.png', 'Explore Garmin marine electronics'],
+    ['raymarine', 'electronics.html', 'Raymarine', 'assets/logos/raymarine.jpg', 'Explore Raymarine marine electronics'],
+    ['simrad', 'electronics.html', 'Simrad', 'assets/logos/simrad.png', 'Explore Simrad marine electronics'],
+    ['fusion', 'fusion-audio.html', 'Fusion', 'assets/logos/fusion.png', 'Explore Fusion marine audio'],
+    ['bg', 'electronics.html', 'B&G', 'assets/logos/bg.png', 'Explore B and G marine electronics'],
+  ];
+
+  const renderBrandCards = (hidden = false) => brandCards.map(([brandClass, href, alt, src, label]) => (
+    `<a class="brand-carousel-card ${brandClass}" href="${href}"${hidden ? ' tabindex="-1"' : ` aria-label="${label}"`}><img src="${src}" alt="${hidden ? '' : alt}"></a>`
+  )).join('');
+
+  const brandStrip = document.createElement('section');
+  brandStrip.className = 'page-brand-strip';
+  brandStrip.setAttribute('aria-label', 'Marine technology brands Knight Marine installs and supports');
+  brandStrip.innerHTML = `
+    <div class="wrap page-brand-strip-inner">
+      <div class="page-brand-strip-copy">
+        <p class="eyebrow">Technology we install &amp; support</p>
+        <strong>Trusted systems. Properly integrated.</strong>
+      </div>
+      <div class="brand-carousel page-brand-strip-carousel">
+        <div class="brand-carousel-track">
+          <div class="brand-carousel-set">${renderBrandCards()}</div>
+          <div class="brand-carousel-set" aria-hidden="true">${renderBrandCards(true)}</div>
+        </div>
+      </div>
+    </div>`;
+  pageHero.insertAdjacentElement('afterend', brandStrip);
+}
+
 /*
   Reusable boat / project enquiry
   --------------------------------
@@ -165,9 +201,9 @@ document.querySelectorAll('.side-card').forEach((sideCard) => {
         <label><span>Preferred contact</span><select name="preferredContact"><option>Email</option><option>Phone</option><option>Either</option></select></label>
         <label><span>Boat make / model</span><input name="boatModel" autocomplete="off"></label>
         <label><span>Boat length</span><input name="boatLength" placeholder="e.g. 40 ft" autocomplete="off"></label>
-        <label><span>Marina / location</span><input name="boatLocation" autocomplete="off"></label>
-        <label><span>What can we help with? *</span><select name="workType" required>${workTypeOptions}</select></label>
-        <label><span>Tell us about the problem or project *</span><textarea name="projectDescription" rows="5" required placeholder="What would you like to diagnose, repair, install or upgrade?"></textarea></label>
+        <label class="enquiry-wide"><span>Marina / location</span><input name="boatLocation" autocomplete="off"></label>
+        <label class="enquiry-wide"><span>What can we help with? *</span><select name="workType" required>${workTypeOptions}</select></label>
+        <label class="enquiry-wide"><span>Tell us about the problem or project *</span><textarea name="projectDescription" rows="5" required placeholder="What would you like to diagnose, repair, install or upgrade?"></textarea></label>
         <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
       </div>
       <div class="enquiry-footer">
