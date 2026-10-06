@@ -74,7 +74,6 @@ h1 { max-width: 920px; margin-bottom: 24px; font-size: clamp(3.35rem, 8.2vw, 7.1
 .hero-brand-carousel .brand-carousel-card { width: 92px; min-height: 42px; padding: 7px 10px; border-color: rgba(255,255,255,.52); border-radius: 8px; box-shadow: none; }
 .hero-brand-carousel .brand-carousel-card:hover, .hero-brand-carousel .brand-carousel-card:focus-visible { box-shadow: 0 8px 20px rgba(0,0,0,.18); transform: translateY(-2px); }
 .hero-brand-carousel .brand-carousel-card img { max-width: 72px; max-height: 27px; }
-.hero-brand-carousel .brand-carousel-card.smg img { max-width: 68px; max-height: 28px; }
 .hero-brand-carousel .brand-carousel-card.victron img { max-width: 44px; max-height: 31px; }
 .hero-brand-carousel .brand-carousel-card.bg img { max-width: 70px; }
 .service-logo-set .dark-logo { background: #0b1925; }
@@ -285,8 +284,6 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .brand-carousel-card { display: grid; place-items: center; width: clamp(155px, 16vw, 184px); min-height: 108px; padding: 19px 24px; background: #fff; border: 1px solid #d7e3e7; border-radius: 17px; box-shadow: 0 9px 24px rgba(8,32,51,.06); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
 .brand-carousel-card:hover, .brand-carousel-card:focus-visible { border-color: rgba(2,183,216,.7); box-shadow: 0 14px 30px rgba(8,32,51,.11); transform: translateY(-3px); }
 .brand-carousel-card img { display: block; width: 100%; max-width: 148px; max-height: 58px; object-fit: contain; }
-.brand-carousel-card.smg { background: #2e488c; border-color: #2e488c; }
-.brand-carousel-card.smg img { max-width: 132px; max-height: 56px; }
 .brand-carousel-card.victron img { max-width: 104px; max-height: 76px; }
 .brand-carousel-card.bg { background: #0b1925; border-color: #0b1925; }
 .brand-carousel-card.bg img { max-width: 132px; }
@@ -300,7 +297,6 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .page-brand-strip .brand-carousel-track { animation-duration: 27s; }
 .page-brand-strip .brand-carousel-card { width: 138px; min-height: 76px; padding: 12px 18px; border-radius: 13px; }
 .page-brand-strip .brand-carousel-card img { max-width: 112px; max-height: 42px; }
-.page-brand-strip .brand-carousel-card.smg img { max-width: 102px; max-height: 44px; }
 .page-brand-strip .brand-carousel-card.victron img { max-width: 72px; max-height: 54px; }
 .page-brand-strip .brand-carousel-card.bg img { max-width: 104px; }
 

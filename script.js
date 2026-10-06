@@ -64,7 +64,6 @@ const pageHero = document.querySelector('main .page-hero');
 
 if (pageHero) {
   const brandCards = [
-    ['smg', 'electronics.html', 'SMG', 'assets/logos/smg.svg', 'Explore marine technology supplied through SMG'],
     ['victron', 'power-systems.html', 'Victron Energy', 'assets/logos/victron-energy.png', 'Explore Victron Energy power systems'],
     ['garmin', 'electronics.html', 'Garmin', 'assets/logos/garmin-logo-official.png', 'Explore Garmin marine electronics'],
     ['raymarine', 'electronics.html', 'Raymarine', 'assets/logos/raymarine.jpg', 'Explore Raymarine marine electronics'],
