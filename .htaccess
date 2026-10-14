@@ -1,0 +1,58 @@
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+AddType video/mp4 .m4v
+
+RewriteEngine On
+
+# Keep the staging subdomain usable, but canonicalise the public domain.
+RewriteCond %{HTTP_HOST} ^www\.knightmarine\.co\.uk$ [NC]
+RewriteRule ^ https://knightmarine.co.uk%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^knightmarine\.co\.uk$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://knightmarine.co.uk%{REQUEST_URI} [R=301,L]
+
+# Redirect addresses from the previous WordPress website.
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^about-us/?$ /meet-the-team.html [R=301,L]
+RewriteRule ^contact-us/?$ /index.html#contact [R=301,L,NE]
+RewriteRule ^marine-electronics/?$ /electronics.html [R=301,L]
+RewriteRule ^calibration-and-tuning/?$ /calibration-commissioning.html [R=301,L]
+RewriteRule ^(batteries-chargers-and-solar-power|lithium-battery-upgrade|high-output-alternators)/?$ /power-systems.html [R=301,L]
+RewriteRule ^entertainment-systems/?$ /fusion-audio.html [R=301,L]
+RewriteRule ^(rudder-bearing-servicing|cutlass-bearing-servicing|propeller-and-shaft-cleaning|teak-repair-and-protection|anode-replacement|seacock-replacement|mast-servicing|winch-servicing)/?$ /boat-care.html [R=301,L]
+RewriteRule ^deck-and-hull-polishing/?$ /detailing.html [R=301,L]
+RewriteRule ^antifouling/?$ /antifouling.html [R=301,L]
+RewriteRule ^full-refit-services/?$ /yacht-refit.html [R=301,L]
+RewriteRule ^(bow-and-stern-thrusters|heating-systems|electric-winch-and-windlass)/?$ /marine-electrical.html [R=301,L]
+RewriteRule ^(blue-water-services|sailors-services)/?$ /yacht-refit.html [R=301,L]
+RewriteRule ^privacy-policy/?$ /privacy-policy.html [R=301,L]
+RewriteRule ^terms-and-conditions/?$ /terms-and-conditions.html [R=301,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "^(admin\.html|admin\.js|supabase-config\.js)$">
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+<FilesMatch "\.(md|sql|txt)$">
+  Require all denied
+</FilesMatch>
+

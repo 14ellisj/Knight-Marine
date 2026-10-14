@@ -19,6 +19,10 @@ Static, multi-page website built from the supplied homepage direction and servic
 - `stories.html` - public recent-work and job-stories page
 - `story.html` - individual customer-facing job-story page
 - `admin.html` - secure staff publishing area (connect Supabase first)
+- `privacy-policy.html` - website privacy and cookie notice
+- `terms-and-conditions.html` - website usage terms
+- `send-enquiry.php` - same-site enquiry email handler for StackCP
+- `.htaccess` - old WordPress redirects, HTTPS/canonical rules and security headers
 
 ## Media library
 
@@ -28,8 +32,9 @@ Use `assets/media/gallery/README.md` for the gallery folder structure and web-im
 
 ## Before publishing
 
-1. Confirm the final telephone, email and address details.
-2. Replace or add the most representative job photos for each service page.
-3. Connect the contact calls-to-action to the preferred enquiry form or CRM, if required.
-4. Add an ecommerce platform and checkout when the shop catalogue is ready; the shop page is already in the site navigation and design system.
-5. Follow [SUPABASE-SETUP.md](SUPABASE-SETUP.md) to turn on secure story publishing and job-photo uploads.
+1. Confirm the final telephone, email, company and address details.
+2. Have the privacy notice and website terms reviewed and approved by the business.
+3. Follow [DEPLOYMENT.md](DEPLOYMENT.md), including a real staging enquiry test.
+4. Approve the Commercial holding page and add final Meet the Team photography.
+5. Add an ecommerce platform and checkout when the shop catalogue is ready.
+6. Follow [SUPABASE-SETUP.md](SUPABASE-SETUP.md) when staff story publishing is required.

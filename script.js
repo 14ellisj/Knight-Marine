@@ -5,6 +5,7 @@ const primaryNavigation = [
   ['power-systems.html', 'Onboard power'],
   ['calibration-commissioning.html', 'Calibration'],
   ['yacht-refit.html', 'Refit'],
+  ['commercial.html', 'Commercial'],
   ['stories.html', 'Projects'],
   ['meet-the-team.html', 'Meet the team'],
 ];
@@ -60,7 +61,21 @@ document.querySelectorAll('[data-year]').forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
-const pageHero = document.querySelector('main .page-hero');
+if (window.location.hash === '#book-service') {
+  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#contact`);
+  document.querySelector('#contact')?.scrollIntoView();
+}
+
+document.querySelectorAll('.copyright').forEach((element) => {
+  if (element.querySelector('.footer-legal')) return;
+  element.insertAdjacentHTML('beforeend', `
+    <span class="footer-legal">
+      <span aria-hidden="true"> · </span><a href="privacy-policy.html">Privacy &amp; cookies</a>
+      <span aria-hidden="true"> · </span><a href="terms-and-conditions.html">Website terms</a>
+    </span>`);
+});
+
+const pageHero = document.querySelector('main .page-hero:not([data-no-brand-strip])');
 
 if (pageHero) {
   const brandCards = [
@@ -130,6 +145,7 @@ const enquiryMarkup = `
           <label class="enquiry-wide"><span>Brief project description *</span><textarea name="projectDescription" rows="4" required placeholder="What would you like to improve, repair or install?"></textarea></label>
           <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
         </div>
+        <p class="enquiry-privacy">We use these details only to respond to your enquiry. See our <a href="privacy-policy.html">privacy policy</a>.</p>
         <p class="enquiry-note">Or call our team directly on <a href="tel:02381112032">02381 112 032</a>.</p>
         <div class="enquiry-footer">
           <p class="enquiry-status" role="status" aria-live="polite"></p>
@@ -205,6 +221,7 @@ document.querySelectorAll('.side-card').forEach((sideCard) => {
         <label class="enquiry-wide"><span>Tell us about the problem or project *</span><textarea name="projectDescription" rows="5" required placeholder="What would you like to diagnose, repair, install or upgrade?"></textarea></label>
         <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
       </div>
+      <p class="enquiry-privacy">We use these details only to respond to your enquiry. See our <a href="privacy-policy.html">privacy policy</a>.</p>
       <div class="enquiry-footer">
         <p class="enquiry-status" role="status" aria-live="polite">Required fields are marked *</p>
         <button class="button primary" type="submit">Send Enquiry</button>
@@ -269,7 +286,6 @@ const submitEnquiry = async (event) => {
   const status = form.querySelector('.enquiry-status');
   const data = Object.fromEntries(new FormData(form).entries());
   if (data.website) return;
-  delete data.website;
 
   submit.disabled = true;
   status.textContent = 'Preparing your enquiry…';
@@ -299,7 +315,8 @@ const submitEnquiry = async (event) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('Submission failed');
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) throw new Error(result.message || 'Submission failed');
     form.reset();
     status.textContent = 'Thank you. Your project details have been sent to Knight Marine.';
   } catch (error) {

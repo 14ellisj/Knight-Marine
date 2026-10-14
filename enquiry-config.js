@@ -1,10 +1,7 @@
-/*
-  Connect the reusable project enquiry form here when the live form endpoint is
-  available. The endpoint must accept a JSON POST body.
+/* Use the same-site PHP handler on Knight Marine hosting. Local previews keep
+   the email-app fallback so the form can still be tested without PHP. */
+const isKnightMarineHosting = /(^|\.)knightmarine\.co\.uk$/i.test(window.location.hostname);
 
-  Example:
-  window.KM_ENQUIRY_CONFIG = { endpoint: "https://example.com/enquiries" };
-*/
 window.KM_ENQUIRY_CONFIG = {
-  endpoint: "",
+  endpoint: isKnightMarineHosting ? "send-enquiry.php" : "",
 };

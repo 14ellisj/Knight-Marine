@@ -1,0 +1,11 @@
+.gitattributes export-ignore
+.github/ export-ignore
+.gitignore export-ignore
+README.md export-ignore
+DEPLOYMENT.md export-ignore
+SEO-LAUNCH-CHECKLIST.md export-ignore
+SUPABASE-SETUP.md export-ignore
+assets/media/gallery/README.md export-ignore
+assets/images/*-required.txt export-ignore
+assets/logos/*-required.txt export-ignore
+
