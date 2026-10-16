@@ -60,7 +60,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(7,24,36,.98) 0%, rgba(7,24,36,.84) 40%, rgba(7,24,36,.42) 100%); }
 .hero::after { content: ""; position: absolute; z-index: 0; inset: auto -5% -44% 45%; height: 460px; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; transform: rotate(-20deg); }
 .hero.has-image { background-position: center; background-size: cover; background-repeat: no-repeat; }
-.hero-home { background-image: url("assets/images/home-team.jpg"); background-position: center 46%; }
+.hero-home { background-image: url("assets/images/selected-antifouling-hero.jpg"); background-position: center 48%; }
 .hero-inner { position: relative; z-index: 1; width: 100%; min-width: 0; max-width: 1220px; margin: 0 auto; padding: 92px 20px 145px; }
 .hero-k-mark { position: absolute; z-index: 1; top: 50%; right: max(3vw, calc((100vw - 1280px) / 2)); width: clamp(280px,26vw,380px); height: clamp(300px,28vw,410px); opacity: .96; transform: translateY(-48%); filter: drop-shadow(0 18px 34px rgba(0,166,214,.28)); pointer-events: none; }
 .hero-k-mark img { width: 100%; height: 100%; padding: 6px 12px 6px 6px; object-fit: contain; }
@@ -103,6 +103,7 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.35rem, 4.8vw, 4.1re
 .section-heading p { margin: 0; color: var(--muted); font-size: 1.05rem; }
 .section-paper { color: var(--ink); background: var(--paper); }
 .section-paper .section-heading p, .section-paper .content-block p { color: var(--copy); }
+.section-k-mark { display: block; width: 56px; height: 52px; margin: 0 0 18px; object-fit: contain; filter: drop-shadow(0 7px 12px rgba(0,166,214,.18)); }
 .section-deep { background: #041018; }
 .section-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .inline-cta { margin-top: 28px; }
@@ -133,10 +134,17 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.35rem, 4.8vw, 4.1re
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 66px); align-items: center; }
 .image-panel { min-height: 480px; overflow: hidden; background: #0b2739 center/cover no-repeat; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 .image-panel.solar { background-image: url("assets/images/marina-solar-optimized.webp"); }
-.image-panel.garmin { background-image: url("assets/images/electronics-installation.jpg"); background-position: 52% center; }
+.image-panel.garmin { background-image: url("assets/images/selected-electronics-detail.jpg"); background-position: 52% center; }
 .image-panel.interior { background-image: url("assets/images/refit-interior.jpg"); }
 .image-panel.battery { background-image: url("assets/images/power-lithium.jpg"); }
-.image-panel.electrical { background-image: url("assets/images/lithium-battery-installation-optimized.webp"); background-position: center; }
+.image-panel.electrical, .image-panel.power-work { background-image: url("assets/images/selected-power-detail.jpg"); background-position: center; }
+.image-panel.maintenance-work { background-image: url("assets/images/selected-maintenance-detail.jpg"); background-position: center; }
+.image-panel.detailing-work { background-image: url("assets/images/selected-detailing-detail.jpg"); background-position: center; }
+.image-panel.antifouling-work { background-image: url("assets/images/selected-maintenance-hero.jpg"); background-position: center; }
+.image-panel.refit-interior { background-image: url("assets/images/selected-refit-interior.jpg"); background-position: center; }
+.image-panel.refit-cabin { background-image: url("assets/images/selected-refit-cabin.jpg"); background-position: center; }
+.image-panel.calibration-work { background-image: url("assets/images/selected-calibration-detail.jpg"); background-position: center; }
+.image-panel.smart-work { background-image: url("assets/images/selected-electronics-hero.jpg"); background-position: center; }
 .image-panel.team-work { background-image: url("assets/images/home-team.jpg"); background-position: center; }
 .premium-box { padding: clamp(30px, 5vw, 54px); color: var(--ink); background: #fff; border-radius: var(--radius); }
 .premium-box h2 { margin-bottom: 17px; font-size: clamp(2.1rem, 4.5vw, 3.5rem); line-height: .98; letter-spacing: -.055em; }
@@ -163,17 +171,18 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .page-hero p { max-width: 630px; margin: 0; color: #d7e3ea; font-size: 1.1rem; }
 .page-hero-brand-logo { width: 92px; margin: 0 0 22px; padding: 9px 12px; background: rgba(255,255,255,.95); border-radius: 10px; }
 .page-hero-brand-logo img { width: 100%; max-height: 72px; object-fit: contain; }
-.hero-electronics { background-image: url("assets/images/electronics-installation.jpg"); background-position: 55% center; }
-.hero-power { background-image: url("assets/images/marina-solar-optimized.webp"); background-position: center 48%; }
-.hero-smart { background-image: url("assets/images/refit-interior.jpg"); }
-.hero-antifouling { background-image: url("assets/images/boatyard-antifouling.jpg"); background-position: center 55%; }
-.hero-detailing { background-image: url("assets/images/recent-boat-care.jpg"); background-position: center 45%; }
-.hero-refit { background-image: url("assets/images/refit-cockpit.jpg"); background-position: center 58%; }
-.hero-fusion { background-image: url("assets/images/fusion-audio-installation.jpg"); background-position: center 55%; }
-.hero-commercial { background-image: url("assets/images/universal-marina-base.jpg"); background-position: center 52%; }
+.hero-electronics { background-image: url("assets/images/selected-electronics-hero.jpg"); background-position: center; }
+.hero-power { background-image: url("assets/images/selected-power-hero.jpg"); background-position: center 52%; }
+.hero-smart { background-image: url("assets/images/selected-smart-hero.jpg"); background-position: center; }
+.hero-antifouling { background-image: url("assets/images/selected-antifouling-hero.jpg"); background-position: center 48%; }
+.hero-maintenance { background-image: url("assets/images/selected-maintenance-hero.jpg"); background-position: center 44%; }
+.hero-detailing { background-image: url("assets/images/selected-detailing-hero.jpg"); background-position: center 52%; }
+.hero-refit { background-image: url("assets/images/selected-refit-hero.jpg"); background-position: center 54%; }
+.hero-fusion { background-image: url("assets/images/selected-fusion-hero.jpg"); background-position: center 48%; }
+.hero-commercial { background-image: url("assets/images/selected-commercial-hero.jpg"); background-position: center 54%; }
 .hero-team { background-image: url("assets/images/home-team.jpg"); background-position: center 44%; }
-.hero-calibration { background-image: url("assets/images/garmin-navigation-display-optimized.webp"); background-position: center; }
-.hero-diagnostics { background-image: url("assets/images/victron-electrical-installation-optimized.webp"); background-position: center; }
+.hero-calibration { background-image: url("assets/images/selected-calibration-hero.jpg"); background-position: center; }
+.hero-diagnostics { background-image: url("assets/images/selected-electrical-hero.jpg"); background-position: center; }
 .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 23px; color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .breadcrumb span { color: var(--muted); }
 
@@ -234,7 +243,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .problem-card .text-link { color: #006c93; }
 .victron-feature { background: linear-gradient(145deg,#031018,#0b2b3c); }
 .victron-feature-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,6vw,74px); align-items: center; }
-.victron-feature-image { min-height: 610px; background: #0b2739 url("assets/images/victron-electrical-installation-optimized.webp") center/cover no-repeat; border: 1px solid rgba(0,166,214,.35); border-radius: var(--radius); box-shadow: var(--shadow); }
+.victron-feature-image { min-height: 610px; background: #0b2739 url("assets/images/selected-power-hero.jpg") 72% center/cover no-repeat; border: 1px solid rgba(0,166,214,.35); border-radius: var(--radius); box-shadow: var(--shadow); }
 .victron-feature-copy h2 { max-width: 650px; margin: 0 0 20px; font-size: clamp(2.45rem,5vw,4.5rem); line-height: .94; letter-spacing: -.06em; }
 .victron-feature-copy > p:not(.eyebrow) { color: #c5d5dc; font-size: 1.05rem; }
 .victron-feature-copy .check-list li { color: #e5eef2; }
@@ -352,8 +361,8 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .gallery-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .gallery-tile { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; overflow: hidden; padding: 28px; background: #0a2638 center/cover no-repeat; border: 1px solid rgba(255,255,255,.18); border-radius: 22px; transition: transform .25s ease, border-color .25s ease; }
 .gallery-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(3,14,22,.94), rgba(3,14,22,.08)); }
-.gallery-tile.gallery-electronics { background-image: url("assets/images/recent-electronics.jpg"); }
-.gallery-tile.gallery-care { background-image: url("assets/images/recent-boat-care.jpg"); }
+.gallery-tile.gallery-electronics { background-image: url("assets/images/selected-electronics-detail.jpg"); }
+.gallery-tile.gallery-care { background-image: url("assets/images/selected-detailing-hero.jpg"); }
 .gallery-tile:hover { border-color: var(--blue); transform: translateY(-5px); }
 .gallery-tile h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.04em; }
 .gallery-tile h3, .gallery-tile p, .gallery-tile .text-link { position: relative; z-index: 1; }
@@ -383,17 +392,21 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .enquiry-panel strong { color: #fff; }
 .location-section { padding-bottom: 50px; background: #092332; }
 .location-card { display: grid; grid-template-columns: 1.18fr .82fr; overflow: hidden; background: #06151f; border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); }
-.location-map { position: relative; min-height: 520px; background: #12384a; }
-.location-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.map-pin-card { position: absolute; right: 20px; bottom: 20px; left: 20px; display: flex; align-items: center; gap: 12px; max-width: 360px; padding: 14px 16px; color: var(--ink); background: rgba(255,255,255,.96); border: 1px solid #dbe6e9; border-radius: 14px; box-shadow: 0 14px 35px rgba(2,14,22,.22); }
-.map-pin { position: relative; flex: 0 0 30px; width: 30px; height: 38px; background: var(--blue-dark); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
-.map-pin::after { content: ""; position: absolute; top: 9px; left: 9px; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+.location-map { position: relative; min-height: 520px; overflow: hidden; background: #12384a; }
+.location-map::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 145px; background: linear-gradient(180deg, transparent, rgba(3,16,24,.36)); pointer-events: none; }
+.location-map > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-pin-card { position: absolute; z-index: 1; right: 20px; bottom: 20px; left: 20px; display: flex; align-items: center; gap: 13px; max-width: 390px; padding: 13px 16px 13px 13px; color: var(--ink); background: rgba(255,255,255,.96); border: 1px solid rgba(255,255,255,.84); border-radius: 16px; box-shadow: 0 14px 35px rgba(2,14,22,.3); backdrop-filter: blur(7px); }
+.location-brand-mark { flex: 0 0 43px; width: 43px; height: 41px; padding: 2px; object-fit: contain; filter: drop-shadow(0 5px 8px rgba(0,166,214,.2)); }
 .map-pin-card > span:last-child { display: grid; }
 .map-pin-card strong { font-size: .92rem; }
 .map-pin-card small { color: #5f727c; font-size: .73rem; }
 .location-copy { align-self: center; padding: clamp(35px, 5vw, 64px); }
 .location-copy h2 { margin-bottom: 17px; font-size: clamp(2.35rem, 4.5vw, 3.9rem); line-height: .97; letter-spacing: -.055em; }
 .location-copy > p:not(.eyebrow) { color: var(--muted); }
+.premier-advantage-note { margin: 24px 0; padding: 20px 21px; color: #dce9ee; background: rgba(0,166,214,.11); border: 1px solid rgba(0,166,214,.38); border-radius: 16px; }
+.premier-advantage-note > strong { display: block; margin-bottom: 8px; color: var(--white); font-size: 1.08rem; }
+.premier-advantage-note p { margin: 0 0 9px; color: #bdd0d9; font-size: .88rem; line-height: 1.6; }
+.premier-advantage-note a { display: inline-flex; gap: 7px; color: #6bddf7; font-size: .84rem; font-weight: 850; }
 .location-copy address { margin: 26px 0; padding-left: 18px; color: #c5d5dc; border-left: 3px solid var(--blue); font-style: normal; }
 .location-copy address strong { color: #fff; }
 .footer { padding: 45px 20px 28px; color: var(--muted); background: #020a10; }
@@ -571,22 +584,24 @@ body.dialog-open { overflow: hidden; }
   .topbar > a:not(.topbar-location) { font-size: .7rem; }
   .topbar > a:first-child { min-height: 34px; font-size: .82rem; }
   .topbar-location { order: -1; width: 100%; justify-content: center; border-radius: 10px; }
-  .nav { min-height: 70px; padding-inline: 16px; }
-  .brand { flex-basis: 215px; padding: 7px 10px; border-radius: 11px; }
-  .hero { min-height: 675px; }
+  .nav { min-height: 64px; padding: 8px 16px; }
+  .brand { flex-basis: 178px; padding: 6px 9px; border-radius: 10px; }
+  .menu-toggle { width: 42px; height: 42px; }
+  .hero { min-height: 640px; }
   .hero::before, .page-hero::before { background: linear-gradient(90deg, rgba(7,24,36,.97), rgba(7,24,36,.76)); }
-  .hero-inner { padding: 72px 20px 130px; }
-  .hero-k-mark { top: auto; right: -28px; bottom: 84px; width: 210px; height: 230px; opacity: .76; transform: none; }
+  .hero-inner { padding: 52px 20px 105px; }
+  .hero-k-mark { z-index: 0; top: auto; right: -34px; bottom: 30px; width: 180px; height: 198px; opacity: .52; transform: none; }
   h1 { font-size: clamp(3.2rem, 14.5vw, 4.8rem); }
   .hero-home h1 { font-size: clamp(2.8rem, 10.8vw, 3.75rem); }
   .hero-title-break { display: block; }
-  .actions { align-items: stretch; }
-  .actions .button { flex: 1 1 190px; }
+  .actions { width: 100%; align-items: stretch; flex-direction: column; }
+  .actions .button { flex: 0 0 auto; width: 100%; min-height: 54px; }
   .trust-strip { margin-top: -52px; }
   .trust-card { grid-template-columns: 1fr; }
   .trust-item { padding: 19px 22px; border-right: 0; border-bottom: 1px solid #e4ecef; }
   .trust-item:last-child { border-bottom: 0; }
   .section { padding-block: 52px; }
+  .section.compact { padding-block: 34px; }
   .service-grid, .feature-list, .process-grid, .split, .content-grid, .shop-inner, .contact-card, .gallery-intro, .story-grid, .partner-grid, .video-grid, .location-card, .refit-grid, .problem-grid, .power-component-grid, .proof-grid { grid-template-columns: 1fr; }
   .victron-feature-image { min-height: 360px; }
   .calibration-visual { min-height: 340px; }
@@ -635,7 +650,7 @@ body.dialog-open { overflow: hidden; }
   .enquiry-footer .button { width: 100%; }
   .contact-intro { position: static; }
   .inline-enquiry-form { padding: 20px 16px; }
-  .hero-home { min-height: 790px; }
+  .hero-home { min-height: 660px; }
   .brand-carousel.hero-brand-carousel { max-width: 100%; margin-bottom: 23px; }
   .hero-brand-carousel .brand-carousel-card { width: 82px; min-height: 38px; padding: 6px 8px; }
 }

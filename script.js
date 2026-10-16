@@ -4,10 +4,9 @@ const primaryNavigation = [
   ['electronics.html', 'Navigation systems'],
   ['power-systems.html', 'Onboard power'],
   ['calibration-commissioning.html', 'Calibration'],
+  ['boat-care.html', 'Maintenance'],
   ['yacht-refit.html', 'Refit'],
-  ['commercial.html', 'Commercial'],
   ['stories.html', 'Projects'],
-  ['meet-the-team.html', 'Meet the team'],
 ];
 
 document.querySelectorAll('.nav-links').forEach((navigation) => {
@@ -21,16 +20,12 @@ document.querySelectorAll('.nav-links').forEach((navigation) => {
   }));
 });
 
-document.querySelectorAll('a[href="meet-the-team.html"]').forEach((link) => {
-  if (/^about(?: the team)?$/i.test(link.textContent.trim())) link.textContent = 'Meet the team';
-});
-
 document.querySelectorAll('.topbar > span').forEach((location) => {
   const link = document.createElement('a');
   link.className = 'topbar-location';
   link.href = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') ? '#location' : 'index.html#location';
-  link.setAttribute('aria-label', 'Find Knight Marine at Universal Marina on the River Hamble');
-  link.innerHTML = '<span>Based at</span><strong>Universal Marina · River Hamble</strong>';
+  link.setAttribute('aria-label', 'Bring your boat to Knight Marine at Universal Marina');
+  link.innerHTML = '<span>Bring your boat to</span><strong>Universal Marina</strong>';
   location.replaceWith(link);
 });
 
@@ -141,7 +136,7 @@ const enquiryMarkup = `
           <label><span>Boat make / model</span><input name="boatModel" autocomplete="off"></label>
           <label><span>Boat length</span><input name="boatLength" placeholder="e.g. 40 ft" autocomplete="off"></label>
           <label><span>Current marina / location</span><input name="boatLocation" autocomplete="off"></label>
-          <label class="enquiry-wide"><span>Type of work required</span><select name="workType"><option value="">Please select</option><option>Marine electrical assessment</option><option>Electrical diagnostics / repair</option><option>Onboard power system</option><option>Navigation electronics</option><option>Calibration / commissioning</option><option>Connectivity / networking</option><option>Yacht refit</option><option>Boat care</option><option>Commercial marine</option><option>Other</option></select></label>
+          <label class="enquiry-wide"><span>Type of work required</span><select name="workType"><option value="">Please select</option><option>Marine electrical assessment</option><option>Electrical diagnostics / repair</option><option>Onboard power system</option><option>Navigation electronics</option><option>Calibration / commissioning</option><option>Connectivity / networking</option><option>Yacht refit</option><option>Yacht maintenance</option><option>Other</option></select></label>
           <label class="enquiry-wide"><span>Brief project description *</span><textarea name="projectDescription" rows="4" required placeholder="What would you like to improve, repair or install?"></textarea></label>
           <label class="enquiry-trap" aria-hidden="true"><span>Leave this empty</span><input name="website" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -166,15 +161,15 @@ const enquiryWorkTypes = [
   'Connectivity / networking',
   'Marine audio',
   'Yacht refit',
-  'Boat care',
-  'Commercial marine',
+  'Yacht maintenance',
   'Other',
 ];
 
 const pageWorkTypes = {
-  'antifouling.html': 'Boat care',
+  'antifouling.html': 'Yacht maintenance',
+  'boat-care.html': 'Yacht maintenance',
   'calibration-commissioning.html': 'Calibration / commissioning',
-  'detailing.html': 'Boat care',
+  'detailing.html': 'Yacht maintenance',
   'electronics.html': 'Navigation electronics',
   'fusion-audio.html': 'Marine audio',
   'marine-electrical.html': 'Electrical diagnostics / repair',
@@ -237,7 +232,7 @@ const enquiryStatus = enquiryDialog?.querySelector('.enquiry-status');
 const enquiryClose = enquiryDialog?.querySelector('.enquiry-close');
 let enquiryOpener = null;
 
-const enquiryTextPattern = /tell us about|start an enquiry|request a quote|ask our team|discuss|ask about your project|plan your|book a marine|book electrical|book calibration|make a commercial enquiry|request antifouling|request detailing|start an email enquiry/i;
+const enquiryTextPattern = /tell us about|start an enquiry|request a quote|ask our team|discuss|ask about your project|plan your|book a marine|book electrical|book calibration|request antifouling|request detailing|start an email enquiry/i;
 
 const openEnquiry = (trigger) => {
   if (!enquiryDialog || !enquiryForm) return;
