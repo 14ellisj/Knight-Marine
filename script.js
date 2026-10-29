@@ -74,12 +74,12 @@ const pageHero = document.querySelector('main .page-hero:not([data-no-brand-stri
 
 if (pageHero) {
   const brandCards = [
-    ['victron', 'power-systems.html', 'Victron Energy', 'assets/logos/victron-energy.png', 'Explore Victron Energy power systems'],
-    ['garmin', 'electronics.html', 'Garmin', 'assets/logos/garmin-logo-official.png', 'Explore Garmin marine electronics'],
-    ['raymarine', 'electronics.html', 'Raymarine', 'assets/logos/raymarine.jpg', 'Explore Raymarine marine electronics'],
-    ['simrad', 'electronics.html', 'Simrad', 'assets/logos/simrad.png', 'Explore Simrad marine electronics'],
-    ['fusion', 'fusion-audio.html', 'Fusion', 'assets/logos/fusion.png', 'Explore Fusion marine audio'],
-    ['bg', 'electronics.html', 'B&G', 'assets/logos/bg.png', 'Explore B and G marine electronics'],
+    ['victron', 'power-systems.html', 'Victron Energy', 'assets/logos/victron-energy-web.webp', 'Explore Victron Energy power systems'],
+    ['garmin', 'electronics.html', 'Garmin', 'assets/logos/garmin-logo-official-web.webp', 'Explore Garmin marine electronics'],
+    ['raymarine', 'electronics.html', 'Raymarine', 'assets/logos/raymarine-web.webp', 'Explore Raymarine marine electronics'],
+    ['simrad', 'electronics.html', 'Simrad', 'assets/logos/simrad-web.webp', 'Explore Simrad marine electronics'],
+    ['fusion', 'fusion-audio.html', 'Fusion', 'assets/logos/fusion-web.webp', 'Explore Fusion marine audio'],
+    ['bg', 'electronics.html', 'B&G', 'assets/logos/bg-web.webp', 'Explore B and G marine electronics'],
   ];
 
   const renderBrandCards = (hidden = false) => brandCards.map(([brandClass, href, alt, src, label]) => (

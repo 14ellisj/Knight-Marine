@@ -60,7 +60,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(7,24,36,.98) 0%, rgba(7,24,36,.84) 40%, rgba(7,24,36,.42) 100%); }
 .hero::after { content: ""; position: absolute; z-index: 0; inset: auto -5% -44% 45%; height: 460px; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; transform: rotate(-20deg); }
 .hero.has-image { background-position: center; background-size: cover; background-repeat: no-repeat; }
-.hero-home { background-image: url("assets/images/selected-antifouling-hero.jpg"); background-position: center 48%; }
+.hero-home { background-image: url("assets/images/selected-antifouling-hero-web.webp"); background-position: center 48%; }
 .hero-inner { position: relative; z-index: 1; width: 100%; min-width: 0; max-width: 1220px; margin: 0 auto; padding: 92px 20px 145px; }
 .hero-k-mark { position: absolute; z-index: 1; top: 50%; right: max(3vw, calc((100vw - 1280px) / 2)); width: clamp(280px,26vw,380px); height: clamp(300px,28vw,410px); opacity: .96; transform: translateY(-48%); filter: drop-shadow(0 18px 34px rgba(0,166,214,.28)); pointer-events: none; }
 .hero-k-mark img { width: 100%; height: 100%; padding: 6px 12px 6px 6px; object-fit: contain; }
@@ -134,7 +134,7 @@ h2.section-heading { margin-bottom: 15px; font-size: clamp(2.35rem, 4.8vw, 4.1re
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 66px); align-items: center; }
 .image-panel { min-height: 480px; overflow: hidden; background: #0b2739 center/cover no-repeat; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 .image-panel.solar { background-image: url("assets/images/marina-solar-optimized.webp"); }
-.image-panel.garmin { background-image: url("assets/images/selected-electronics-detail.jpg"); background-position: 52% center; }
+.image-panel.garmin { background-image: url("assets/images/selected-electronics-detail-web.webp"); background-position: 52% center; }
 .image-panel.interior { background-image: url("assets/images/refit-interior.jpg"); }
 .image-panel.battery { background-image: url("assets/images/power-lithium.jpg"); }
 .image-panel.electrical, .image-panel.power-work { background-image: url("assets/images/selected-power-detail.jpg"); background-position: center; }
@@ -172,11 +172,11 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .page-hero-brand-logo { width: 92px; margin: 0 0 22px; padding: 9px 12px; background: rgba(255,255,255,.95); border-radius: 10px; }
 .page-hero-brand-logo img { width: 100%; max-height: 72px; object-fit: contain; }
 .hero-electronics { background-image: url("assets/images/selected-electronics-hero.jpg"); background-position: center; }
-.hero-power { background-image: url("assets/images/selected-power-hero.jpg"); background-position: center 52%; }
+.hero-power { background-image: url("assets/images/selected-power-hero-web.webp"); background-position: center 52%; }
 .hero-smart { background-image: url("assets/images/selected-smart-hero.jpg"); background-position: center; }
-.hero-antifouling { background-image: url("assets/images/selected-antifouling-hero.jpg"); background-position: center 48%; }
+.hero-antifouling { background-image: url("assets/images/selected-antifouling-hero-web.webp"); background-position: center 48%; }
 .hero-maintenance { background-image: url("assets/images/selected-maintenance-hero.jpg"); background-position: center 44%; }
-.hero-detailing { background-image: url("assets/images/selected-detailing-hero.jpg"); background-position: center 52%; }
+.hero-detailing { background-image: url("assets/images/selected-detailing-hero-web.webp"); background-position: center 52%; }
 .hero-refit { background-image: url("assets/images/selected-refit-hero.jpg"); background-position: center 54%; }
 .hero-fusion { background-image: url("assets/images/selected-fusion-hero.jpg"); background-position: center 48%; }
 .hero-commercial { background-image: url("assets/images/selected-commercial-hero.jpg"); background-position: center 54%; }
@@ -243,7 +243,7 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .problem-card .text-link { color: #006c93; }
 .victron-feature { background: linear-gradient(145deg,#031018,#0b2b3c); }
 .victron-feature-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,6vw,74px); align-items: center; }
-.victron-feature-image { min-height: 610px; background: #0b2739 url("assets/images/selected-power-hero.jpg") 72% center/cover no-repeat; border: 1px solid rgba(0,166,214,.35); border-radius: var(--radius); box-shadow: var(--shadow); }
+.victron-feature-image { min-height: 610px; background: #0b2739 url("assets/images/selected-power-hero-web.webp") 72% center/cover no-repeat; border: 1px solid rgba(0,166,214,.35); border-radius: var(--radius); box-shadow: var(--shadow); }
 .victron-feature-copy h2 { max-width: 650px; margin: 0 0 20px; font-size: clamp(2.45rem,5vw,4.5rem); line-height: .94; letter-spacing: -.06em; }
 .victron-feature-copy > p:not(.eyebrow) { color: #c5d5dc; font-size: 1.05rem; }
 .victron-feature-copy .check-list li { color: #e5eef2; }
@@ -361,8 +361,8 @@ cite { display: block; margin-top: 20px; color: var(--gold); font-size: .9rem; f
 .gallery-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .gallery-tile { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 300px; overflow: hidden; padding: 28px; background: #0a2638 center/cover no-repeat; border: 1px solid rgba(255,255,255,.18); border-radius: 22px; transition: transform .25s ease, border-color .25s ease; }
 .gallery-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(3,14,22,.94), rgba(3,14,22,.08)); }
-.gallery-tile.gallery-electronics { background-image: url("assets/images/selected-electronics-detail.jpg"); }
-.gallery-tile.gallery-care { background-image: url("assets/images/selected-detailing-hero.jpg"); }
+.gallery-tile.gallery-electronics { background-image: url("assets/images/selected-electronics-detail-web.webp"); }
+.gallery-tile.gallery-care { background-image: url("assets/images/selected-detailing-hero-web.webp"); }
 .gallery-tile:hover { border-color: var(--blue); transform: translateY(-5px); }
 .gallery-tile h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.04em; }
 .gallery-tile h3, .gallery-tile p, .gallery-tile .text-link { position: relative; z-index: 1; }
@@ -660,3 +660,20 @@ body.dialog-open { overflow: hidden; }
   .brand-carousel-track { animation: none; }
   .brand-carousel-set[aria-hidden="true"] { display: none; }
 }
+
+/* Homepage maintenance route spans the service grid. */
+.maintenance-service-card { grid-column: 1 / -1; }
+@media (min-width: 761px) {
+  .maintenance-service-card ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
+/* Keep supporting form copy readable within dark sidebar containers. */
+.enquiry-form .enquiry-privacy,
+.enquiry-form .enquiry-note,
+.enquiry-form .enquiry-status {
+  color: #405762;
+  font-size: .875rem;
+  line-height: 1.55;
+}
+.enquiry-form input::placeholder,
+.enquiry-form textarea::placeholder { color: #596b75; opacity: 1; }
