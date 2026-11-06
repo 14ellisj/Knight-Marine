@@ -1,25 +1,3 @@
-const primaryNavigation = [
-  ['index.html', 'Home'],
-  ['marine-electrical.html', 'Marine electrical'],
-  ['electronics.html', 'Navigation systems'],
-  ['power-systems.html', 'Onboard power'],
-  ['calibration-commissioning.html', 'Calibration'],
-  ['boat-care.html', 'Maintenance'],
-  ['yacht-refit.html', 'Refit'],
-  ['stories.html', 'Projects'],
-];
-
-document.querySelectorAll('.nav-links').forEach((navigation) => {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  navigation.replaceChildren(...primaryNavigation.map(([href, label]) => {
-    const link = document.createElement('a');
-    link.href = href;
-    link.textContent = label;
-    if (href === currentPage) link.setAttribute('aria-current', 'page');
-    return link;
-  }));
-});
-
 document.querySelectorAll('.topbar > span').forEach((location) => {
   const link = document.createElement('a');
   link.className = 'topbar-location';
@@ -37,19 +15,65 @@ const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.nav-links');
 
 if (toggle && menu) {
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('is-open');
+  const groups = [...menu.querySelectorAll('.nav-group')];
+  const compact = window.matchMedia('(max-width: 900px)');
+  let hoveredGroup = null;
+
+  function closeGroups(except) {
+    groups.forEach((group) => {
+      if (group !== except) group.open = false;
+    });
+    if (hoveredGroup !== except) hoveredGroup = null;
+  }
+
+  function setMenu(open) {
+    menu.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.classList.toggle('menu-open', open);
+    if (!open) closeGroups();
+  }
+
+  groups.forEach((group) => {
+    group.addEventListener('pointerenter', (event) => {
+      if (compact.matches || event.pointerType !== 'mouse' || group.open) return;
+      closeGroups(group);
+      group.open = true;
+      hoveredGroup = group;
+    });
+    group.addEventListener('pointerleave', () => {
+      if (hoveredGroup === group && !group.contains(document.activeElement)) closeGroups();
+    });
+    group.querySelector('summary').addEventListener('click', (event) => {
+      event.preventDefault();
+      const open = !group.open || hoveredGroup === group;
+      closeGroups();
+      group.open = open;
+    });
+    group.addEventListener('focusout', (event) => {
+      if (!group.contains(event.relatedTarget)) group.open = false;
+    });
   });
 
-  menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menu.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    document.body.classList.remove('menu-open');
-  }));
+  toggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+  menu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) setMenu(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const group = groups.find((item) => item.open);
+    if (group) {
+      closeGroups();
+      group.querySelector('summary').focus();
+    } else if (menu.classList.contains('is-open')) {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+  compact.addEventListener('change', () => setMenu(false));
 }
 
 document.querySelectorAll('[data-year]').forEach((element) => {
@@ -87,6 +111,7 @@ if (pageHero) {
   )).join('');
 
   const brandStrip = document.createElement('section');
+  if (document.getElementById('products')) brandStrip.id = 'brands';
   brandStrip.className = 'page-brand-strip';
   brandStrip.setAttribute('aria-label', 'Marine technology brands Knight Marine installs and supports');
   brandStrip.innerHTML = `
@@ -227,6 +252,8 @@ document.querySelectorAll('.side-card').forEach((sideCard) => {
 
 const enquiryDialog = document.querySelector('#boat-enquiry');
 const enquiryForm = enquiryDialog?.querySelector('.enquiry-form');
+const projectDescription = enquiryForm?.elements.projectDescription;
+const defaultDescriptionPrompt = projectDescription?.placeholder;
 const enquirySource = enquiryForm?.querySelector('input[name="enquirySource"]');
 const enquiryStatus = enquiryDialog?.querySelector('.enquiry-status');
 const enquiryClose = enquiryDialog?.querySelector('.enquiry-close');
@@ -238,6 +265,9 @@ const openEnquiry = (trigger) => {
   if (!enquiryDialog || !enquiryForm) return;
   enquiryOpener = trigger;
   enquiryForm.reset();
+  const pageName = window.location.pathname.split('/').pop();
+  enquiryForm.elements.workType.value = pageWorkTypes[pageName] || '';
+  projectDescription.placeholder = trigger.dataset.descriptionPrompt || defaultDescriptionPrompt;
   enquiryStatus.textContent = '';
   const requestedSource = trigger.dataset.enquirySource || `${document.title} - ${trigger.textContent.trim()}`;
   enquirySource.value = requestedSource;
@@ -252,7 +282,7 @@ document.querySelectorAll('a, button').forEach((trigger) => {
   const isProjectAction = trigger.matches('[data-enquiry-source], .nav-cta') ||
     (href === '#contact' && !trigger.closest('.topbar')) ||
     (trigger.matches('.button') && href.startsWith('mailto:info@knightmarine.co.uk')) ||
-    enquiryTextPattern.test(trigger.textContent.trim());
+    (href === 'index.html#contact' && enquiryTextPattern.test(trigger.textContent.trim()));
 
   if (!isProjectAction || href.startsWith('tel:') || (href === '#contact' && document.querySelector('.inline-enquiry-form'))) return;
   trigger.setAttribute('aria-haspopup', 'dialog');

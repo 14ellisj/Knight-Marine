@@ -29,6 +29,9 @@ button { font: inherit; }
 .topbar > a:first-child { display: inline-flex; align-items: center; min-height: 31px; padding: 5px 11px; color: var(--white); background: rgba(255,255,255,.075); border: 1px solid rgba(255,255,255,.13); border-radius: 999px; font-size: .86rem; font-weight: 820; letter-spacing: .01em; }
 .topbar > a:first-child::before { content: "Call"; margin-right: 6px; color: #73dff8; font-size: .64rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
 .topbar-location { display: inline-flex; align-items: center; gap: 8px; padding: 5px 11px; color: var(--white); background: rgba(0,166,214,.13); border: 1px solid rgba(0,166,214,.35); border-radius: 999px; }
+.topbar .premier-reminder { padding: 6px 12px; border: 1px solid #376271; border-radius: 14px; color: #dbe8ee; text-align: center; }
+.premier-reminder strong { color: #81e1f7; font-weight: 750; }
+.premier-reminder:hover strong, .premier-reminder:focus-visible strong { text-decoration: underline; text-underline-offset: 3px; }
 .topbar-location span { color: #8fa5b0; font-size: .66rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 .topbar-location strong { color: #fff; font-size: .84rem; letter-spacing: -.01em; }
 .site-header { position: sticky; top: 0; z-index: 30; background: rgba(7,24,36,.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
@@ -39,6 +42,15 @@ button { font: inherit; }
 .nav-links a { position: relative; padding: 8px 0; }
 .nav-links a::after { content: ""; position: absolute; right: 0; bottom: 3px; left: 0; height: 2px; transform: scaleX(0); transform-origin: right; background: var(--blue); transition: transform .24s ease; }
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+.nav-group { position: relative; }
+.nav-group summary { display: flex; align-items: center; gap: 9px; padding: 12px; cursor: pointer; list-style: none; }
+.nav-group summary::-webkit-details-marker { display: none; }
+.nav-group summary::after { content: ""; width: 6px; height: 6px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+.nav-group[open] summary::after { transform: rotate(225deg); }
+.nav-group[open] summary, .nav-group:has([aria-current]) summary { color: var(--blue); }
+.nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 190px; padding: 6px; border: 1px solid var(--line); border-radius: 12px; background: #0b2433; box-shadow: var(--shadow); }
+.nav-dropdown a { display: block; padding: 10px 12px; }
+#products, #brands, #equipment, #winter-maintenance { scroll-margin-top: 110px; }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 .nav-cta, .button { display: inline-flex; justify-content: center; align-items: center; gap: .45rem; min-height: 47px; border: 1px solid transparent; padding: 12px 18px; border-radius: 999px; font-size: .84rem; font-weight: 800; text-align: center; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
 .nav-cta, .button.primary { color: #00131d; background: var(--blue); }
@@ -546,7 +558,10 @@ body.dialog-open { overflow: hidden; }
 .legal-content a { color: #006c93; font-weight: 800; }
 .legal-meta { padding: 17px 20px; background: #e7eff2; border-left: 4px solid var(--blue); border-radius: 8px; }
 
-@media (max-width: 1260px) {
+@media (max-width: 900px) {
+  .nav-links { max-height: calc(100dvh - 115px); overflow-y: auto; }
+  .nav-group summary { justify-content: space-between; }
+  .nav-dropdown { position: static; padding: 0 0 0 16px; border: 0; box-shadow: none; }
   .nav-links { position: absolute; top: calc(100% + 6px); right: 13px; left: 13px; display: grid; justify-content: stretch; gap: 2px; padding: 12px; visibility: hidden; opacity: 0; background: #0b2433; border: 1px solid var(--line); border-radius: 18px; transform: translateY(-12px); transition: opacity .2s ease, transform .2s ease, visibility .2s ease; box-shadow: var(--shadow); }
   .nav-links a { padding: 12px; border-radius: 9px; }
   .nav-links a:hover { background: rgba(255,255,255,.08); }
@@ -583,6 +598,7 @@ body.dialog-open { overflow: hidden; }
   .topbar { justify-content: center; gap: 4px 14px; padding-inline: 14px; }
   .topbar > a:not(.topbar-location) { font-size: .7rem; }
   .topbar > a:first-child { min-height: 34px; font-size: .82rem; }
+  .topbar > a.premier-reminder { font-size: .78rem; }
   .topbar-location { order: -1; width: 100%; justify-content: center; border-radius: 10px; }
   .nav { min-height: 64px; padding: 8px 16px; }
   .brand { flex-basis: 178px; padding: 6px 9px; border-radius: 10px; }
