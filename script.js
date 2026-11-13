@@ -191,6 +191,8 @@ const enquiryWorkTypes = [
 ];
 
 const pageWorkTypes = {
+  'garmin-installation.html': 'Navigation electronics',
+  'marine-lithium-batteries.html': 'Onboard power system',
   'antifouling.html': 'Yacht maintenance',
   'boat-care.html': 'Yacht maintenance',
   'calibration-commissioning.html': 'Calibration / commissioning',
